@@ -4,12 +4,14 @@ var merge = require('webpack-merge');
 var path = require('path');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 
+
 const PATHS = {
-  app: path.join(__dirname, 'app/index.jsx'),
+  app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
 };
 
 const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
 
 var common = {
   output: {
@@ -18,7 +20,7 @@ var common = {
   },
   entry: PATHS.app,
   resolve: {
-    extensions: ['', '.js', 'jsx']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [{
